@@ -15,11 +15,17 @@ export default {
         post: {
             type: Object,
             required: true
+        },
+        index: {
+            type: Number,
+            required: true
         }
     },
     methods: {
         changeLike (post) {
-            post.isLiked = !post.isLiked;
+            post['index'] = this.index
+            this.$store.dispatch('changeLike', post).then(() => {         
+            })
         }
     }
 }

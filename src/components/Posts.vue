@@ -7,7 +7,7 @@
         <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
     </div>
     <div class="card-footer">
-        <like-button :post="this.post"/>
+        <like-button :post="this.post" :index="index" />
     </div>
     </div>
 </template>
@@ -23,6 +23,10 @@ export default {
     props: {
         post: {
             type: Object,
+            required: true
+        },
+        index: {
+            type: Number,
             required: true
         }
     },
