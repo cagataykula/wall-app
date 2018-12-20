@@ -1,1 +1,1 @@
-# vue-wall-app
+# wall-app
