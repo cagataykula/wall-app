@@ -1,8 +1,10 @@
 <template>
     <section>
     <Header text="Gönderiler" />
-    <Loader v-if="isLoading" />
-    <Posts v-for="post in posts" :post="post" :key="post.id" />
+    <div class="container">
+        <Loader v-if="isLoading" />
+        <Posts v-for="(post, index) in posts" :post="post" :index="index" :key="post.id" />
+    </div>
     </section>
 </template>
 
