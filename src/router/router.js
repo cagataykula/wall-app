@@ -1,12 +1,18 @@
-import Home from '../components/Home.vue';
+import Home from '../pages/Home.vue';
+import Post from '../pages/Post.vue';
 
 
 export default {
     routes: [
         {
-          path: '/',
-          component: Home,
-      }
+            path: '/',
+            component: Home,
+        },
+        {
+            path: '/post/:id',
+            component: Post,
+        }
+
     ],
     mode: 'history'
 }
