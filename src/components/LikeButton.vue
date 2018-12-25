@@ -19,12 +19,16 @@ export default {
         index: {
             type: Number,
             required: true
+        },
+        fromSinglePage: {
+            type: Boolean,
+            required: false
         }
     },
     methods: {
         changeLike (post) {
             post['index'] = this.index
-            this.$store.dispatch('changeLike', post).then(() => {         
+            this.$store.dispatch('changeLike', [post, this.fromSinglePage]).then(() => {         
             })
         }
     }
