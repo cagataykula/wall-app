@@ -1,13 +1,14 @@
 <template>
     <div class="card">
     <!-- <div class="card-header">Featured</div> -->
-    <div class="card-body">
-        <h5 class="card-title">{{this.post.title}}</h5>
-        <p class="card-text">{{this.post.body}}</p>
-        <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+    <div class="card-body" @click="routerLink">
+        <!-- <router-link :to="routerLink"> -->
+            <h5 class="card-title">{{this.post.title}}</h5>
+            <p class="card-text">{{this.post.body}}</p>
+        <!-- </router-link> -->
     </div>
     <div class="card-footer">
-        <like-button :post="this.post" :index="index" />
+        <like-button :post="this.post" :index="compIndex" :fromSinglePage="fromSinglePage" />
     </div>
     </div>
 </template>
@@ -26,8 +27,22 @@ export default {
             required: true
         },
         index: {
-            type: Number,
+            type: String,
             required: true
+        },
+        fromSinglePage: {
+            type: Boolean,
+            required: false
+        }
+    },
+    methods: {
+        routerLink() {
+            this.$router.push({ path: `/post/${this.index}` })
+        }
+    },
+    computed: {
+        compIndex(){
+            return parseInt(this.index);
         }
     },
     components: { LikeButton }
