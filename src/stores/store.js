@@ -1,7 +1,8 @@
 import service from '../services/service'
 
 const state = {
-    posts: []
+    posts: [],
+    postDetail: {}
 };
 
 const getters = {};
@@ -10,8 +11,18 @@ const mutations = {
     setPosts(state, posts) {
         state.posts = posts;
     },
+    setPostDetail(state, postDetail) {
+        state.postDetail = postDetail;
+    },
+
     changeLike(state, post){
-        state.posts[parseInt(post.index)].isLiked = !state.posts[parseInt(post.index)].isLiked
+        if(post[1] != true)
+            state.posts[parseInt(post[0].index)].isLiked = !state.posts[parseInt(post[0].index)].isLiked;
+        else
+        state.postDetail.isLiked = !state.postDetail.isLiked;
+    },
+
+    changeLikePostDetail(state, post){
     }
 };
 
@@ -22,11 +33,19 @@ const actions = {
         });
     },
     
+    fetchPostDetail(context, postId) {
+        return service.fetchPostDetail(postId[0]).then((snapshot) => {
+            let postDetail = snapshot.val();
+            postDetail['index'] = postId;
+            context.commit('setPostDetail',postDetail);
+        });
+    },
+    
     changeLike(context, post) {
-        return service.changeLike(post).then(() => {
+        return service.changeLike(post[0]).then(() => {
             context.commit('changeLike', post);
         })
-    } 
+    }
 };
 
 
