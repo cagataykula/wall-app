@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import Header from './Header.vue';
-import Posts from './Posts.vue';
-import Loader from './Loader.vue';
+import Header from '../components/Header.vue';
+import Posts from '../components/Posts.vue';
+import Loader from '../components/Loader.vue';
 
 export default {
     name: 'Home',
